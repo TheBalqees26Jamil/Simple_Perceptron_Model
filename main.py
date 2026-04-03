@@ -1,6 +1,8 @@
 import numpy as np
 
-# بيانات الإدخال
+# Building the model only with using numpy (From Scratch)
+
+# Input Data
 X = np.array([
     [0, 0],
     [0, 1],
@@ -8,8 +10,8 @@ X = np.array([
     [1, 1]
 ])
 
-# الفئات المقابلة للإدخال
-y = np.array([0, 1, 1, 1])  # 0 و 1 تمثل الفئتين المختلفتين
+# Output
+y = np.array([0, 1, 1, 1]) 
 
 
 class Perceptron:
@@ -31,7 +33,7 @@ class Perceptron:
                 error=y[idx] - y_predicted
                 if error !=0:
 
-                    # تحديث الأوزان
+                    # Update the weights
                     update = self.learning_rate * error
                     self.weights += update * x_i
                     self.bias += update
@@ -44,12 +46,11 @@ class Perceptron:
         return self._activation_function(linear_output)
 
 
-# إنشاء نموذج البيرسبترون
+# Perceptron Object
 perceptron = Perceptron(learning_rate=0.1, n_iter=3)
 
-# تدريب النموذج
 perceptron.fit(X, y)
 
-# اختبار النموذج
+# Test the model
 predictions = perceptron.predict(X)
 print("pre:", predictions)
